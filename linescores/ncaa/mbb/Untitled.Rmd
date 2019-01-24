@@ -1,0 +1,36 @@
+---
+title: "2018-19 NCAA Men’s Basketball Season"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE}
+library(tidyverse)
+```
+
+```{r}
+mydata <- read_csv("https://raw.githubusercontent.com/buotm/datasets/master/linescores/ncaa/mbb/current-season.csv")
+```
+
+### Xavier's Season
+
+```{r}
+xu <- mydata %>% filter(School == "Xavier") %>% 
+                 mutate(Result = ifelse(Final > Opp.Final, "W","L")) %>%
+                 select(Date,Site,Opp,Opp.Conf,Final,Opp.Final,Result) 
+xu
+```
+
+
+
+### ACC Games
+
+```{r}
+xu <- mydata %>% filter(Conference == "ACC") %>% 
+                 mutate(Result = ifelse(Final > Opp.Final, "W","L")) %>%
+                 select(Date,School,Opp,Result) 
+xu
+```
