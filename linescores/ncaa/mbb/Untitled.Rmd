@@ -22,6 +22,8 @@ xu <- mydata %>% filter(School == "Xavier") %>%
                  mutate(Result = ifelse(Final > Opp.Final, "W","L")) %>%
                  select(Date,Site,Opp,Opp.Conf,Final,Opp.Final,Result) 
 xu
+sum(xu$Result == "W")
+sum(xu$Result == "L")
 ```
 
 
